@@ -1,0 +1,23 @@
+- route:
+    id: bill
+    nodePrefixId: route-311
+    trace: true
+    from:
+      id: in-bill
+      uri: netty-http
+      variableReceive: global:undefined
+      parameters:
+        passphrase: manager
+        protocol: http
+        port: "8008"
+        path: api/v1/bill/in
+        host: 0.0.0.0
+      steps:
+        - unmarshal:
+            id: unmarshal-de88
+            json:
+              id: json-ee18
+              library: Jackson
+        - log:
+            id: log-fb84
+            message: ${body}

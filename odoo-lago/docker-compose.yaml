@@ -1,0 +1,9 @@
+services:
+  odoo-lago:
+    container_name: odoo-lago
+    image: odoo-lago
+    restart: always
+    ports:
+      - "8081:8080"
+    networks:
+      - karavan
