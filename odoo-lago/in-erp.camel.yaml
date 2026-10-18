@@ -1,0 +1,21 @@
+- route:
+    id: route-erp-in
+    nodePrefixId: route-e3c
+    from:
+      id: in-erp
+      uri: netty-http
+      parameters:
+        passphrase: manager
+        protocol: http
+        host: 0.0.0.0
+        port: "8008"
+        path: api/v1/erp/in
+      steps:
+        - unmarshal:
+            id: unmarshal-ef6c
+            json:
+              id: json-d724
+              library: Jackson
+        - log:
+            id: log-eac0
+            message: "received: ${body}"
