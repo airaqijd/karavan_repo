@@ -5,7 +5,6 @@
     from:
       id: in-bill
       uri: netty-http
-      variableReceive: global:undefined
       parameters:
         passphrase: manager
         protocol: http
@@ -20,4 +19,5 @@
               library: Jackson
         - log:
             id: log-fb84
-            message: ${body}
+            message: "received: ${body}"
+            loggingLevel: INFO

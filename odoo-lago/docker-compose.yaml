@@ -4,6 +4,6 @@ services:
     image: odoo-lago
     restart: always
     ports:
-      - "8081:8080"
+      - "8008:8008"
     networks:
       - karavan
