@@ -1,3 +1,5 @@
+- beans:
+    - {}
 - route:
     id: route-bill-in
     nodePrefixId: route-311
@@ -21,3 +23,21 @@
             id: log-fb84
             message: "received: ${body}"
             loggingLevel: INFO
+        - bean:
+            id: bean-b7dc
+            ref: CustomBean
+            method: process
+            beanType: CustomBean
+            scope: Singleton
+        - process:
+            id: process-315d
+            ref: CustomProcessor
+        - to:
+            id: in-bill-redis
+            description: enqueue message to redis
+            uri: spring-redis
+            parameters:
+              host: localhosts
+              port: "6379"
+              command: RPUSH
+              channels: camel:bill:in
